@@ -1191,31 +1191,6 @@ if(cmd === `${prefix}coins`) {
 
 
   
-  client.on('message', message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes('discord.gg/')){
-        message.delete()
-    return message.reply(`**يمنع نشر روابط الدسكورد في السيرفر هنا **`)
-    }
-});
-
-client.on('message', message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes('youtube.com/')){
-        message.delete()
-    return message.reply(`**يمنع نشر روابط اليوتيوب هنا **`)
-    }
-});
-
-
-
-client.on('message', message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes('facebook.com/')){
-        message.delete()
-    return message.reply(`**حبي ممنوع نشر روابط الفيس بوك :joy: **`)
-    }
-});
 
 
 client.login(process.env.BOT_TOKEN);
