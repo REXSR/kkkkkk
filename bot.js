@@ -27,7 +27,7 @@ client.on('ready', () => {
   console.log('')
 });
 
-
+ 
 
 client.on('message', message => {
     if (message.author.bot) return;
