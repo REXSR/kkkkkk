@@ -57,8 +57,6 @@ client.on('message', message => {
 
 ❖ $$bans ➾ لي معرف مين بالع بان
 
-❖ $$coins ➾  لي معرفة الكوين
-
 ❖ $$sg ➾ لي البحث في جوجل
 
 ❖ $$topinvites  ➾ لي عرض من اكثر في الدعوات
@@ -1152,8 +1150,8 @@ fs.writeFile("./creditsCode.json", JSON.stringify(credits), (err) => {
       credits: m + 0.5,
   }
 
-    if(message.content.startsWith(prefix + "$$credit" || prefix + "credits")) {
-message.channel.send(***your 💳 balance is \`${userData.credits}***``.);
+    if(message.content.startsWith(prefix + "%credit" || prefix + "credits")) {
+message.channel.send(**${message.author.username}, your 💳 balance is \`${userData.credits}``.);
 }
 });
 
