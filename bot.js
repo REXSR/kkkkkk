@@ -1133,7 +1133,7 @@ const secre = [
 const credits = JSON.parse(fs.readFileSync("./creditsCode.json", "utf8"));
 const coolDown = new Set();
 
-client.on('message',async message => {
+client.on('message', message => {
 
 if(message.author.bot) return;
 if(!credits[message.author.id]) credits[message.author.id] = {
@@ -1151,11 +1151,11 @@ fs.writeFile("./creditsCode.json", JSON.stringify(credits), (err) => {
   }
 
     if(message.content.startsWith(prefix + "%credit" || prefix + "credits")) {
-message.channel.send(**${message.author.username}, your 💳 balance is \`${userData.credits}``.);
+message.channel.send(**${message.author.username}, your 💳 balance is \`${userData.credits}``.**);
 }
 });
 
-client.on('message', async message => {
+client.on('message', message => {
     let amount = 250;
     if(message.content.startsWith(prefix + "$$daily")) {
     if(message.author.bot) return;
