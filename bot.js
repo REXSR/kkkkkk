@@ -1124,11 +1124,11 @@ const secre = [
       }
   });
 
-  const Discord = require("discord.js");
+ client.on('message', message => {
 const client = new Discord.Client();
 var prefix = "$$"
 const moment = require('moment');
-client.on('message',async message => {
+client.on('message', message => {
   var time = moment().format('Do MMMM YYYY , hh:mm');
   var room;
   var title;
