@@ -1124,7 +1124,6 @@ const secre = [
       }
   });
 
- client.on('message', message => {
 const client = new Discord.Client();
 var prefix = "$$"
 const moment = require('moment');
@@ -1198,7 +1197,7 @@ hours = 12;
                        .setAuthor(message.author.username, message.author.avatarURL)
                        .setTitle(title)
                        .addField('Giveaway Ended !🎉',`Winners : ${gFilter} \nEnded at :`)
-                       .setTimestamp()
+                       .setTimestamp
 					 m.edit('** 🎉 GIVEAWAY ENDED 🎉**' , {embed: endEmbed});
 					message.guild.channels.find("name" , room).send(`**Congratulations ${gFilter}! You won The \`${title}\`**` , {embed: {}})
                      },duration);
@@ -1215,6 +1214,4 @@ hours = 12;
     });
   }
 });
-
-
 client.login(process.env.BOT_TOKEN);
