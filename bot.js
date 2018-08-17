@@ -139,11 +139,11 @@ client.on('message', message => {
 
 ==================================================================
 
-Server support: https://discordgg/fxNGHR 
+Server support:https://discord.gg/5hzm5XT
 
 ==================================================================
 
-bot invite link: https://discordappcom/api/oauth2/authorize?client_id=472224983943217175&permissions=2146958583&scope=bot 
+bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=472224983943217175&permissions=2146958839&scope=bot
 
 ==================================================================
 **
