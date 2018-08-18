@@ -1045,20 +1045,17 @@ client.on("message", (message) => {
     }
 });
 
-const ytdl = require('ytdl-core');
-
-client.on('message', message => {
-  if (message.content.startsWith('$$رحب بي')) {
-    const voiceChannel = message.member.voiceChannel;
-    voiceChannel.join()
-      .then(connnection => {
-        const stream = ytdl("https://www.youtube.com/watch?v=tEGJhrJracY", { filter: 'audioonly' });
-        const dispatcher = connnection.playStream(stream);
-                dispatcher.on('end', () => voiceChannel.leave());
-
-      });
-  }
-})
+client.on("message", (message) => {
+    if (message.content.startsWith("$$ban")) {
+      if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply(':warning: ماعندك الصلاحيات');
+        var member= message.mentions.members.first();
+        member.ban().then((member) => {
+            message.channel.send(member.displayName + " مع السلامه :wave: ");
+        }).catch(() => {
+            message.channel.send("Error -_-");
+        });
+    }
+});
 
 
 
