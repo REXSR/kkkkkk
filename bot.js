@@ -1048,7 +1048,7 @@ client.on("message", (message) => {
 const ytdl = require('ytdl-core');
 
 client.on('message', message => {
-  if (message.content.startsWith('رحب بي')) {
+  if (message.content.startsWith('$$رحب بي')) {
     const voiceChannel = message.member.voiceChannel;
     voiceChannel.join()
       .then(connnection => {
