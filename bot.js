@@ -103,12 +103,6 @@ client.on('message', message => {
 
 ❖ $$kick <mention > ➾  kickلي اعطاء شخص
 
-❖ $$closeroom ➾ لي قفل الشات او روم صوتي
-
-❖ $$openroom ➾ لي فتح الشات او روم صوتي
-
-❖ $$delet ➾ لي مسح الشات
-
 ❖ $$setvoice  لي انشاء روم فويس اونلاين
 
 ❖ $$say  ➾ يكرر الكلام الذي تقولة
@@ -1040,16 +1034,6 @@ message.channel.send({embed:embed});
 });
 
 
-client.on("message", (message) => {
-    if (message.content.startsWith('$$delet')) {
-        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
-
-        let args = message.content.split(' ').slice(1);
-        let channel = message.client.channels.find('name', args.join(' '));
-        if (!channel) return message.reply('**There is no room like this name -_-**').catch(console.error);
-        channel.delete()
-    }
-});
 
 
 client.on("message", message => {
