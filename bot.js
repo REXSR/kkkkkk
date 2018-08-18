@@ -1052,96 +1052,6 @@ client.on("message", (message) => {
 });
 
 
-var prefix = "$$";
-client.on('message', message => {
- if(message.content === prefix + "closeroom") {
-  if(!message.channel.guild) return message.reply('** هذه الاوامر فقط لل سيرفرات **');
-   if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(' **__ليس لديك صلاحيات__**');
-    message.channel.overwritePermissions(message.guild.roles.find("name", "Owner_of_NetworkShop"), {SEND_MESSAGES: false})
-    message.channel.overwritePermissions(message.guild.roles.find("name", "CO.owner"), {SEND_MESSAGES: false})
-    message.channel.overwritePermissions(message.guild.roles.find("name", "Admin"), {SEND_MESSAGES: false})
-        //يمديك تنسخ السطر وتلصقه تحت
-    .then(() => {
-   message.reply("**__تم تقفيل الشات__ :white_check_mark: **")
-   });
-  }
-    if(message.content === prefix + "openroom") {
-  if(!message.channel.guild) return message.reply('** هذه الاوامر فقط لل سيرفرات **');
-   if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('**__ليس لديك صلاحيات__**');
-    message.channel.overwritePermissions(message.guild.roles.find("name", "Owner_of_NetworkShop"), {SEND_MESSAGES: true})
-    message.channel.overwritePermissions(message.guild.roles.find("name", "CO.owner"), {SEND_MESSAGES: true})
-    message.channel.overwritePermissions(message.guild.roles.find("name", "Admin"), {SEND_MESSAGES: false})
-    //يمديك تنسخ السطر وتلصقه تحت
-    .then(() => {
-   message.reply("**__تم فتح الشات__:white_check_mark:**")
-   });
-   }
-});
-
-var prefix = "$$";
-client.on('message', message => {
-         if (message.content === prefix + "dt") {
-         if (!message.channel.guild) return message.reply('** This command only for servers **');  
-         var currentTime = new Date(),
-            hours = currentTime.getHours() + 4 ,
-            hours2 = currentTime.getHours() + 3 ,
-            hours3 = currentTime.getHours() + 2 ,
-            hours4 = currentTime.getHours() + 3 ,
-            minutes = currentTime.getMinutes(),
-            seconds = currentTime.getSeconds(),
-            Year = currentTime.getFullYear(),
-            Month = currentTime.getMonth() + 1,
-            Day = currentTime.getDate();
-             var h = hours
-  if(hours > 12) {
-               hours -= 12;
-            } else if(hours == 0) {
-                hours = "12";
-            }  
-             if(hours2 > 12) {
-               hours2 -= 12;
-            } else if(hours2 == 0) {
-                hours2 = "12";
-            
-            }  
-                         if(hours3 > 12) {
-               hours3 -= 12;
-            } else if(hours3 == 0) {
-                hours3 = "12";
-            } 
-            if (minutes < 10) {
-                minutes = '0' + minutes;
-            }
-
-            var suffix = 'صباحاَ';
-            if (hours >= 12) {
-                suffix = 'مساء';
-                hours = hours - 12;
-            }
-            if (hours == 0) {
-                hours = 12;
-            }
- 
-
-                var Date15= new Discord.RichEmbed()
-                .setThumbnail("https://i.imgur.com/ib3n4Hq.png") 
-                .setTitle( "『التاريخ  والوقت』")
-                .setColor('RANDOM')
-                .setFooter(message.author.username, message.author.avatarURL)
-                .addField('الامارات',
-                "『"+ hours + ":" + minutes +":"+ seconds + "』")
-                 .addField('مكه المكرمه',
-                "『"+ hours2 + ":" + minutes +":"+ seconds  + "』") 
-                .addField('مصر',
-                "『"+ hours3 + ":" + minutes +":"+ seconds  + "』") 
-                
-                .addField('Date',
-                "『"+ Day + "-" + Month + "-" + Year +  "』")
-
-                 message.channel.sendEmbed(Date15);
-        }
-    });
-
 client.on("message", message => {
     if (message.author.bot) return;
     
@@ -1150,7 +1060,7 @@ client.on("message", message => {
     if (command === "$$mute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
     let user = message.mentions.users.first();
-    let modlog = client.channels.find('name', 'mute-log');
+    let modlog = client.channels.find('name', 'log');
     let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
     if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").catch(console.error);
     if (message.mentions.users.size < 1) return message.reply('** يجب عليك منشنت شخص اولاً**').catch(console.error);
@@ -1184,7 +1094,7 @@ client.on("message", message => {
     if (command === "$$unmute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
     let user = message.mentions.users.first();
-    let modlog = client.channels.find('name', 'mute-log');
+    let modlog = client.channels.find('name', 'log');
     let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
     if (!muteRole) return message.reply("** لا يوجد لديك رتبه الميوت 'Muted' **").catch(console.error);
     if (message.mentions.users.size < 1) return message.reply('** يجب عليك منشنت شخص اولاً**').catch(console.error);
