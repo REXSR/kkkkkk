@@ -1057,7 +1057,12 @@ client.on("message", (message) => {
     }
 });
 
+client.on('guildMemberAdd', member=> {
+    member.addRole(member.guild.roles.find("name","👱member👱"));
+    });
 
-
+client.on('guildMemberAdd', member=> {
+    member.addRole(member.guild.roles.find("name","Muted"));
+    });
 
 client.login(process.env.BOT_TOKEN);
