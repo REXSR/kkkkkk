@@ -1011,10 +1011,6 @@ const secre = [
   });
 
 
-client.on("guildMemberAdd", function(member) {
-    let role = member.guild.roles.find("name", "member");
-    member.addRole(role).catch(console.error);
-});
 
 
 client.on('message', message => {
