@@ -1065,9 +1065,6 @@ client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","👱member👱"));
     });
 
-client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","Muted"));
-    });
 
 
 client.on('message', message => {
