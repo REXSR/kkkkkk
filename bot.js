@@ -175,7 +175,7 @@ if(message.content.startsWith('$$bc')) {
 if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
 if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
 let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-let copy = "Network_Shop";
+let copy = "commandly";
 let request = `Requested By ${message.author.username}`;
 if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
 msg.react('✅')
@@ -342,43 +342,6 @@ client.on('message', message => {
 
 
 
-client.on('message', message => {
-    var prefix = "$$"
-  if (message.author.x5bz) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "kick") {
-               if(!message.channel.guild) return message.reply('** This command only for servers**');
-
-  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS ` Permission**");
-  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**I Don't Have ` KICK_MEMBERS ` Permission**");
-  let user = message.mentions.users.first();
-  let reason = message.content.split(" ").slice(2).join(" ");
-  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
-  if(!reason) return message.reply ("**اكتب سبب الطرد**");
-  if (!message.guild.member(user)
-  .kickable) return message.reply("**لايمكنني طرد شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
-
-  message.guild.member(user).kick();
-
-  const kickembed = new Discord.RichEmbed()
-  .setAuthor(`KICKED!`, user.displayAvatarURL)
-  .setColor("RANDOM")
-  .setTimestamp()
-  .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
-  .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
-  .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
-  message.channel.send({
-    embed : kickembed
-  })
-}
-});
-
 
 
 
@@ -459,31 +422,45 @@ message.channel.send(`**# ${args}**`);
 
 
 
-client.on('message', message => {
-  var prefix ="$$"
-    if (message.content.startsWith(prefix + 'clear')) {
-      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`ماعندك هذا البرمشن[*MANAGE_MESSAGES*] `).catch(console.error);
-  message.delete()
-  if(!message.channel.guild) return;
-  let args = message.content.split(" ").slice(1);
-  
-  const messagecount = parseInt(args.join(' '));
-  
-  message.channel.fetchMessages({
-  
-  limit: messagecount
-  
-  }).then(messages => message.channel.bulkDelete(messages));
-  message.channel.sendMessage("", {embed: {
-    title: "``✏️✅ تــم مسح الشات ``",
-    color: 0x06DF00,
-    footer: {
-    
-    }
-    }}).then(msg => {msg.delete(3000)});
-  };
-  
-  });
+Rocket.on('message', message => { //clear
+    if(!message.channel.guild) return;
+ if(message.content.startsWith(prefix + 'clear')) {
+ if(!message.channel.guild) return message.channel.send('**هذا الامر فقط للسيرفرات**').then(m => m.delete(5000));
+ if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**ليس لديك برمشن adminstrator`' );
+ let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+ let request = `Requested By ${message.author.username}`;
+ message.channel.send(`**هل انت متأكد من حذف الشات؟**`).then(msg => {
+ msg.react('✅')
+ .then(() => msg.react('❌'))
+ .then(() =>msg.react('✅'))
+
+ let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+ let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+
+ let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+ let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+ reaction1.on("collect", r => {
+ message.channel.send(`سينحذف الشات ...`).then(m => m.delete(5000));
+ var msg;
+         msg = parseInt();
+
+       message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+       message.channel.sendMessage("", {embed: {
+         title: "`` تــــم حذف الشات ``",
+         color: 0x06DF00,
+         footer: {
+
+         }
+       }}).then(msg => {msg.delete(3000)});
+
+ })
+ reaction2.on("collect", r => {
+ message.channel.send(`**تم الغاء حذف الشات**`).then(m => m.delete(5000));
+ msg.delete();
+ })
+ })
+ }
+ });
 
 
 
@@ -599,24 +576,6 @@ __امامك  5 توان للاختيار__`)
 
 
 
-client.on('message' , message => {
-    var prefix = "$$";
-    let user = message.mentions.users.first()|| client.users.get(message.content.split(' ')[1])
-    if(message.content.startsWith(prefix + 'unban')) {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('❌|**\`ADMINISTRATOR\`لا توجد لديك رتبة`**');
-        if(!user) return  message.channel.send(`Do this ${prefix} <@ID user> \n or \n ${prefix}unban ID user`);
-        message.guild.unban(user);
-        message.guild.owner.send(`لقد تم فك الباند عن الشخص \n ${user} \n By : <@${message.author.id}>`)
-        var embed = new Discord.RichEmbed()
-        .setThumbnail(message.author.avatarURl)
-        .setColor("RANDOM")
-        .setTitle('**●Unban** !')
-        .addField('**●User Unban :** ', `${user}` , true)
-        .addField('**●By :**' ,       ` <@${message.author.id}> ` , true)
-        .setAuthor(message.guild.name)
-        message.channel.sendEmbed(embed)
-    }
-});
 
 
 client.on('message', message => {
@@ -969,43 +928,152 @@ const secre = [
 
 
 
-
-
-
-
-
 client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","member"));
     });
 
 
-client.on('message', message => {
-        let reason = message.content.split(" ").slice(2).join(" ")
-        let muterole = message.guild.roles.find("name", "muted")
-        let men = message.mentions.users.first()
 
-        if(message.content.startsWith(prefix + "$$mute")) {
-            if(!men) return message.channel.send("**Do you want me to mute you 🤔 ?, please @mention someone.**");
-            if(!reason) return message.channel.send("**Do you want me to mute " + men.username + " with no reason ?, **`")
-            if(!muterole) {
-                message.guild.createRole({name: "muted", color:"#505f74", permissions: [1115136]})
 
-            }
-            message.guild.member(men).addRole(muterole)
-                message.channel.send("**" + men.username + " has been muted! :zipper_mouth:**")
-        }
+Rocket.on('message',function(message) {
+    let toKick = message.mentions.users.first();
+    let toReason = message.content.split(" ").slice(2).join(" ");
+    let toEmbed = new Discord.RichEmbed()
+   if(message.content.startsWith(prefix + '$$kick')) {
+       if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply('**# - ليس لديك البرمشنات المطلوبة!**');
+       if(toKick.kickable) return message.reply("**# - لا استطيع طرد شخص اعلى مني**");
+       if(!toReason) return message.reply("**# - اكتب سبب**")
+       if(toKick.id === message.author.id) return message.reply("**# لا استطيع طردك**")
+       if(!message.guild.member(toKick).kickable) return message.reply("**# - لا استعطيع طرد هذا الشخص!**")
+       let toEmbed;
+       toEmbed = new Discord.RichEmbed()
+       .setTitle("تم طردك من السيرفر!")
+       .setThumbnail(toKick.avatarURL)
+       .addField("**# - السيرفر:**",message.guild.name,true)
+       .addField("**# - السبب:**",toReason,true)
+       .addField("**# - من قبل:**",message.author,true)
+       if(message.member.hasPermission("KICK_MEMBERS")) return (
+           toKick.sendMessage({embed: toEmbed}).then(() => message.guild.member(toKick).kick()).then(() => message.channel.send(`**# Done! I kicked: ${toKick}**`))
+       )
+       }
+});
+Rocket.on("message", function(message) {
+    let toBan = message.mentions.users.first();
+    let toReason = message.content.split(" ").slice(2).join(" ");
+    let toEmbed = new Discord.RichEmbed()
+   if(message.content.startsWith(prefix + "$$ban")) {
+       if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("**# - ليس لديك الخواص المطلوبه**");
+       if(!toBan) return message.reply("**# - Mention a user!**");
+       if(toBan.id === ("344127240935571457")) return message.reply("**انا لا استطيع طرد نفسي**");
+       if(toBan === message.member.guild.owner) return message.reply("**# لا تستطيع طرد اونر السيرفر*");
+       if(toBan.bannable) return message.reply("**لا استطيع طرد شخص اعلى مني**");
+       if(!toReason) return message.reply("**# - اكتب سبب**")
+       if(toBan.id === message.author.id) return message.reply("**# لا استطيع طردك**")
+       if(!message.guild.member(toBan).bannable) return message.reply("**# - لا استطيع طرد هذا الشخص**")
+       let toEmbed;
+       toEmbed = new Discord.RichEmbed()
+       .setTitle("تم طردك من السيرفر")
+       .setThumbnail(toBan.avatarURL)
+       .addField("**# - السيرفر:**",message.guild.name,true)
+       .addField("**# - السبب:**",toReason,true)
+       .addField("**# - من قبل:**",message.author,true)
+       if(message.member.hasPermission("BAN_MEMBERS")) return (
+           toBan.sendMessage({embed: toEmbed}).then(() => message.guild.member(toBan).ban({reason: toReason})).then(() => message.channel.send(`**# Done! I banned: ${toBan}**`))
+       );
 
-        if(message.content.startsWith(prefix + "$$unmute")) {
-            if(!men) return message.channel.send("**please @mention someone. `Ex. $$unmute <@!298732816995319809> bad boy`**");
+   }
+});
 
-            if(!muterole) {
-                message.guild.createRole({name: "muted", color:"#505f74", permissions: [1115136]})
+Rocket.on('message', message => {//unmute
+    if (message.content.startsWith('$$unmute')) {
+  if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
+   let men = message.mentions.users.first()
+   let mas = message.author
+   if(!men) return message.channel.send('`منشن الشخص الذي تريد فك الميوت عنه `');
+   message.guild.channels.forEach(c => {
+   c.overwritePermissions(men.id, {
+           SEND_MESSAGES: true
+           })
+      })
+  const embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setDescription(`**
+   <@${men.id}>
+  تم فك الميوت الكتابي
+  بواسطة : <@${message.author.id}> **`)
+  .setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452093541003296788/start-button-hi.png")
 
-            }
-            message.guild.member(men).removeRole(muterole)
-                message.channel.send("**" + men.username + " has been unmuted! 😀 **")
-        }
-    })
+  Rocket.users.get(men.id).sendEmbed(embed)
+  const Embed11 = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setAuthor(message.guild.name, message.guild.iconURL)
+  .setDescription(`          <@${men.id}>
+  تم فك الميوت الكتابي
+  بواسطة : <@${message.author.id}>
+  `)
+  .setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452093541003296788/start-button-hi.png")
+  message.channel.sendEmbed(Embed11).then(message => {message.delete(20000)})
+      }
+});
+Rocket.on('message', message => {//mute
+    if (message.content.startsWith('$$mute')) {
+  if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
+  let men = message.mentions.users.first()
+  let mas = message.author
+  if(!men) return message.channel.send('`منشن الشخص الذي تريد ان تعطيه ميوت كتابي` ');
+  message.guild.channels.forEach(c => {
+  c.overwritePermissions(men.id, {
+            SEND_MESSAGES: false
+  })
+      })
+  const embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setDescription(`**
+   <@${men.id}>
+  لقد تم اعطائك ميوت كتابي
+  بواسطة : <@${message.author.id}> **`)
+  .setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
+
+  Rocket.users.get(men.id).sendEmbed(embed)
+  const Embed11 = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setAuthor(message.guild.name, message.guild.iconURL)
+  .setDescription(`          <@${men.id}>
+  لقد تم اعطائه الميوت الكتابي بنجاح
+  بواسطة : <@${message.author.id}> `)
+  .setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
+  message.channel.sendEmbed(Embed11).then(message => {message.delete(20000)})
+      }
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
