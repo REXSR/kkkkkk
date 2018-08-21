@@ -422,7 +422,7 @@ message.channel.send(`**# ${args}**`);
 
 
 
-Rocket.on('message', message => { //clear
+client.on('message', message => { //clear
     if(!message.channel.guild) return;
  if(message.content.startsWith(prefix + 'clear')) {
  if(!message.channel.guild) return message.channel.send('**هذا الامر فقط للسيرفرات**').then(m => m.delete(5000));
@@ -935,7 +935,7 @@ client.on('guildMemberAdd', member=> {
 
 
 
-Rocket.on('message',function(message) {
+client.on('message',function(message) {
     let toKick = message.mentions.users.first();
     let toReason = message.content.split(" ").slice(2).join(" ");
     let toEmbed = new Discord.RichEmbed()
@@ -957,7 +957,7 @@ Rocket.on('message',function(message) {
        )
        }
 });
-Rocket.on("message", function(message) {
+client.on("message", function(message) {
     let toBan = message.mentions.users.first();
     let toReason = message.content.split(" ").slice(2).join(" ");
     let toEmbed = new Discord.RichEmbed()
@@ -984,7 +984,7 @@ Rocket.on("message", function(message) {
    }
 });
 
-Rocket.on('message', message => {//unmute
+client.on('message', message => {//unmute
     if (message.content.startsWith('$$unmute')) {
   if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
    let men = message.mentions.users.first()
@@ -1003,7 +1003,7 @@ Rocket.on('message', message => {//unmute
   بواسطة : <@${message.author.id}> **`)
   .setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452093541003296788/start-button-hi.png")
 
-  Rocket.users.get(men.id).sendEmbed(embed)
+  client.users.get(men.id).sendEmbed(embed)
   const Embed11 = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setAuthor(message.guild.name, message.guild.iconURL)
@@ -1015,7 +1015,7 @@ Rocket.on('message', message => {//unmute
   message.channel.sendEmbed(Embed11).then(message => {message.delete(20000)})
       }
 });
-Rocket.on('message', message => {//mute
+client.on('message', message => {//mute
     if (message.content.startsWith('$$mute')) {
   if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
   let men = message.mentions.users.first()
@@ -1034,7 +1034,7 @@ Rocket.on('message', message => {//mute
   بواسطة : <@${message.author.id}> **`)
   .setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
 
-  Rocket.users.get(men.id).sendEmbed(embed)
+  client.users.get(men.id).sendEmbed(embed)
   const Embed11 = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setAuthor(message.guild.name, message.guild.iconURL)
