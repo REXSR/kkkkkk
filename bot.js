@@ -57,15 +57,9 @@ client.on('message', message => {
 
 ❖ $$bans ➾ لي معرف مين بالع بان
 
-❖ $$uptime ➾ من متي البوت سار شغال
-
 ❖ $$sg ➾ لي البحث في جوجل
 
-❖ $$ping ➾ لي معرفة البنج
-
 ❖ $$topinvites  ➾ لي عرض من اكثر في الدعوات
-
-❖ $$report  ➾ للابلاغ عن شخص ما
 
 ❖ $$skin ➾ لي عرض سكن ماين كرافت 
 
@@ -103,19 +97,11 @@ client.on('message', message => {
             اومر ادمن
 ╚[❖════════════❖]╝
 
-❖ $$kick <mention > ➾  kickلي اعطاء شخص
-
 ❖ $$setvoice  لي انشاء روم فويس اونلاين
 
 ❖ $$say  ➾ يكرر الكلام الذي تقولة
 
-❖ $$ban <mention> ➾ لي اعطاء شخص بان
-
-❖ $$unban <mention> ➾ لي فك بان عن شخص
-
 ❖ $$clear ➾ لي مسح الشات
-
-❖ $$mute <mention> ➾ لي اعطاء ميوت لي شخص
 
 ❖ $$ct <name> ➾ لي انشاء روم كتبي
 
@@ -984,21 +970,6 @@ const secre = [
 
 
 
-client.on('message', message => {
-    if(!message.channel.guild) return;
-if (message.content.startsWith('$$ping')) {
-if(!message.channel.guild) return;
-var msg = `${Date.now() - message.createdTimestamp}`
-var api = `${Math.round(client.ping)}`
-if (message.author.bot) return;
-let embed = new Discord.RichEmbed()
-.setAuthor(message.author.username,message.author.avatarURL)
-.setColor('RANDOM')
-.addField('**Time Taken:**',msg + " ms :signal_strength: ")
-.addField('**WebSocket:**',api + " ms :signal_strength: ")
-message.channel.send({embed:embed});
-}
-});
 
 
 
@@ -1006,28 +977,6 @@ message.channel.send({embed:embed});
 client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","member"));
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
