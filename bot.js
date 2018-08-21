@@ -135,7 +135,7 @@ client.on('message', message => {
 
 ==================================================================
 
-Server support:https://discord.gg/5hzm5XT
+Server support: https://discord.gg/dYmDdYj
 
 ==================================================================
 
@@ -800,7 +800,7 @@ client.on('message', msg => {
     const embed = new Discord.RichEmbed()
     .addField("**السؤال**: ",`**${question}**`, true)
     .addField("**الناتج**: ",`**${answer}**`, true)
-    .setFooter("Network_shop حاسبه")
+    .setFooter("gameyass55 حاسبه")
     msg.channel.send(embed)
     }
 };
@@ -938,37 +938,6 @@ if(!xp[message.author.id]){
 });
 
 
-client.on('message', message =>{
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(1);
-    let prefix = '$$';
-     
-    if(cmd === `${prefix}report`){
-        let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if(!rUser) return message.channel.send("Idk who 2 report ??");
-        let reason = args.join(" ").slice(22);
-        if(!reason) return message.channel.send("What is the reason ??");
-    
-        let reportEmbed = new Discord.RichEmbed()
-        .setTitle("User just reported...")
-        .setColor("#f7abab")
-        .addField("- Reported User :", `${rUser} (${rUser.id})`)
-        .addField("- Reported By :", `${message.author} (${message.author.id})`)
-        .addField("- Reported In :", message.channel)
-        .addField("- Report Time :", message.createdAt.toLocaleString(),true)
-        .addField("- Reason :", reason);
-    
-        let reportschannel = message.guild.channels.find(`name`, "reports");
-        if(!reportschannel) return message.channel.send("You should to make `reports` channel.");
-    
-    
-        message.delete().catch(O_o=>{});
-        message.author.send(`<@${rUser.id}>, Reported Successfully!!`)
-        reportschannel.send(reportEmbed);
-    };
-});
-
 
 
 const secre = [
@@ -1058,7 +1027,7 @@ client.on("message", (message) => {
 
 
 client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","👱member👱"));
+    member.addRole(member.guild.roles.find("name","member"));
     });
 
 
@@ -1118,72 +1087,6 @@ if (message.content.startsWith(prefix + "uptime")) {
 });
 
 
-client.on("message", message => {
-    if (message.author.bot) return;
-    
-    let command = message.content.split(" ")[0];
-    
-    if (command === "$$unmute") {
-          if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
-    let user = message.mentions.users.first();
-    let modlog = client.channels.find('name', 'mute-log');
-    let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
-    if (!muteRole) return message.reply("** لا يوجد لديك رتبه الميوت 'Muted' **").catch(console.error);
-    if (message.mentions.users.size < 1) return message.reply('** يجب عليك منشنت شخص اولاً**').catch(console.error);
-    const embed = new Discord.RichEmbed()
-      .setColor(0x00AE86)
-      .setTimestamp()
-      .addField('الأستعمال:', 'اسكت/احكي')
-      .addField('تم فك الميوت عن:', `${user.username}#${user.discriminator} (${user.id})`)
-      .addField('بواسطة:', `${message.author.username}#${message.author.discriminator}`)
-  
-    if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles **').catch(console.error);
-  
-    if (message.guild.member(user).removeRole(muteRole.id)) {
-  return message.reply("**:white_check_mark: .. تم فك الميوت عن الشخص **").catch(console.error);
-  } else {
-      message.guild.member(user).removeRole(muteRole).then(() => {
-  return message.reply("**:white_check_mark: .. تم فك الميوت عن الشخص **").catch(console.error);
-  });
-    }
-  
-  };
-  
-  });
-
-client.on("message", message => {
-    if (message.author.bot) return;
-    
-    let command = message.content.split(" ")[0];
-    
-    if (command === "$$mute") {
-          if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
-    let user = message.mentions.users.first();
-    let modlog = client.channels.find('name', 'mute-log');
-    let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
-    if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").catch(console.error);
-    if (message.mentions.users.size < 1) return message.reply('** يجب عليك منشنت شخص اولاً**').catch(console.error);
-    
-    const embed = new Discord.RichEmbed()
-      .setColor(0x00AE86)
-      .setTimestamp()
-      .addField('الأستعمال:', 'اسكت/احكي')
-      .addField('تم ميوت:', `${user.username}#${user.discriminator} (${user.id})`)
-      .addField('بواسطة:', `${message.author.username}#${message.author.discriminator}`)
-     
-     if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles **').catch(console.error);
-   
-    if (message.guild.member(user).roles.has(muteRole.id)) {
-  return message.reply("**:white_check_mark: .. تم اعطاء العضو ميوت**").catch(console.error);
-  } else {
-      message.guild.member(user).addRole(muteRole).then(() => {
-  return message.reply("**:white_check_mark: .. تم اعطاء العضو ميوت كتابي**").catch(console.error);
-  });
-    }
-  
-  };
-  
-  });
 
 
 
