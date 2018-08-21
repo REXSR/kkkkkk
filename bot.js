@@ -139,7 +139,7 @@ Server support: https://discord.gg/dYmDdYj
 
 ==================================================================
 
-bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=472224983943217175&permissions=2146958839&scope=bot
+bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=481406227054592000&permissions=2146958839&scope=bot
 
 ==================================================================
 **
