@@ -745,7 +745,7 @@ client.on('message', msg => {
     const embed = new Discord.RichEmbed()
     .addField("**السؤال**: ",`**${question}**`, true)
     .addField("**الناتج**: ",`**${answer}**`, true)
-    .setFooter("gameyass55 حاسبه")
+    .setFooter("commandly حاسبه")
     msg.channel.send(embed)
     }
 };
@@ -1052,7 +1052,7 @@ client.on('message', message => {//mute
 
 
 
-	const fs = require('fs');
+
 	const moment = require('moment');
 let profile = JSON.parse(fs.readFileSync("./profile.json", "utf8"))
 client.on("message", message => {
