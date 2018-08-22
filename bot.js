@@ -1015,7 +1015,6 @@ client.on('message', message => {//unmute
    <@${men.id}>
   تم فك الميوت الكتابي
   بواسطة : <@${message.author.id}> **`)
-  .setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452093541003296788/start-button-hi.png")
 
   client.users.get(men.id).sendEmbed(embed)
   const Embed11 = new Discord.RichEmbed()
@@ -1025,7 +1024,6 @@ client.on('message', message => {//unmute
   تم فك الميوت الكتابي
   بواسطة : <@${message.author.id}>
   `)
-  .setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452093541003296788/start-button-hi.png")
   message.channel.sendEmbed(Embed11).then(message => {message.delete(20000)})
       }
 });
