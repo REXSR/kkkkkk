@@ -55,6 +55,12 @@ client.on('message', message => {
              اومر عادية
 ╚[❖════════════❖]╝
 
+❖ $$daily ➾ لي معرفة كم معاك كريديت
+
+❖ $$credit ➾ لي اخد كريديت
+
+❖ $$credits ➾ لي تحويل كريديت
+
 ❖ $$bans ➾ لي معرف مين بالع بان
 
 ❖ $$sg ➾ لي البحث في جوجل
@@ -96,6 +102,14 @@ client.on('message', message => {
 ╔[❖════════════❖]╗
             اومر ادمن
 ╚[❖════════════❖]╝
+
+❖ $$mute ➾ لي اعطاء ميوت
+
+❖ $$unmute ➾ لي فك ميوت
+
+❖ $$ban ➾ لي اعطاء بان
+
+❖ $$kick ➾ لي اعطاء كيك
 
 ❖ $$setvoice  لي انشاء روم فويس اونلاين
 
@@ -1032,7 +1046,6 @@ client.on('message', message => {//mute
    <@${men.id}>
   لقد تم اعطائك ميوت كتابي
   بواسطة : <@${message.author.id}> **`)
-  .setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
 
   client.users.get(men.id).sendEmbed(embed)
   const Embed11 = new Discord.RichEmbed()
@@ -1041,7 +1054,6 @@ client.on('message', message => {//mute
   .setDescription(`          <@${men.id}>
   لقد تم اعطائه الميوت الكتابي بنجاح
   بواسطة : <@${message.author.id}> `)
-  .setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
   message.channel.sendEmbed(Embed11).then(message => {message.delete(20000)})
       }
 
@@ -1105,7 +1117,7 @@ if(message.content.startsWith(prefix + "daily")) {
 let cont = message.content.slice(prefix.length).split(" ");
 let args = cont.slice(2);
 let sender = message.author
-if(message.content.startsWith(prefix + 'trans')) {
+if(message.content.startsWith(prefix + 'credits')) {
           if (!args[0]) {
             message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
          return;
