@@ -1095,7 +1095,7 @@ client.on("message", (message) => {
  };
   }
   if(men) {
-message.channel.send(`** ${men.username}, :credit_card: balance` + " is `" + `${profile[men.id].credits}$` + "`.**")
+message.channel.send(`** ${men.username}, your :credit_card: balance` + " is `" + `${profile[men.id].credits}$` + "`.**")
 } else {
  message.channel.send(`** ${message.author.username}, your :credit_card: balance` + " is `" + `${profile[message.author.id].credits}$` + "`.**")
 }
@@ -1107,7 +1107,7 @@ if(message.content.startsWith(prefix + "daily")) {
   if(profile[message.author.id].lastDaily != moment().format('day')) {
    profile[message.author.id].lastDaily = moment().format('day')
    profile[message.author.id].credits += 310
-    message.channel.send(`**${message.author.username} you collect your \`310\` :dollar: daily pounds**`)
+    message.channel.send(`** :atm:  | ${message.author.username} you received your :yen: \`310\` daily credits!**`)
 } else {
     message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
 }
@@ -1117,12 +1117,12 @@ let args = cont.slice(2);
 let sender = message.author
 if(message.content.startsWith(prefix + 'credits')) {
           if (!args[0]) {
-            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+            message.channel.send(`**Usage: ${prefix}credits @someone amount**`);
          return;
            }
         // We should also make sure that args[0] is a number
         if (isNaN(args[0])) {
-            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+            message.channel.send(`**Usage: ${prefix}credits @someone amount**`);
             return; // Remember to return if you are sending an error message! So the rest of the code doesn't run.
              }
              if(profile[message.author.id].credits < args[0]) return message.channel.send("**Your Credits is not enough  that**")
