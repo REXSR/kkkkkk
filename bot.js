@@ -1148,20 +1148,7 @@ client.on("message",  message => {
           if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما عندك برمشن");
           if(kUser.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما تقدر تسوي بان للأدمين")
 
-          let banEmbed = new Discord.RichEmbed()
-          .setDescription("~Ban~")
-          .setColor("#8e0505")
-          .addField("Banned User", `${User} with ID ${User.id}`)
-          .addField("Banned By", `<@${message.author.id}> with the id ${message.author.id}`)
-          .addField("Banned In", message.channel)
-          .addField("Time", message.createdAt)
-          .addField("Reason", kReason);
 
-          let banChannel = message.guild.channels.find('name', 'kick-ban');
-          if(!banChannel) return message.channel.send("لم اجد روم kick-ban");
-
-          message.guild.member(bUser).kick(bReason)
-          banChannel.send(banEmbed);
         }
         });
 
