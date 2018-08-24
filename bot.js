@@ -1151,7 +1151,7 @@ client.on("message",  message => {
           let banEmbed = new Discord.RichEmbed()
           .setDescription("~Ban~")
           .setColor("#8e0505")
-          .addField("Banned User", `${bUser} with ID ${bUser.id}`)
+          .addField("Banned User", `${User} with ID ${User.id}`)
           .addField("Banned By", `<@${message.author.id}> with the id ${message.author.id}`)
           .addField("Banned In", message.channel)
           .addField("Time", message.createdAt)
