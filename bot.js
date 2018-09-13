@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
- client.user.setActivity("$$help",{type: 'WATCHING'})
+ client.user.setActivity("$$help|$$invite",{type: 'WATCHING'})
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -460,7 +460,7 @@ client.on('message', function(msg) {
 
    client.on('message', message => {
        var prefix ="$$"
-   if(message.content.startsWith(prefix + "invites")) {
+   if(message.content.startsWith(prefix + "invite")) {
     message.guild.fetchInvites().then(invs => {
       let user = message.mentions.users.first() || message.author
       let personalInvites = invs.filter(i => i.inviter.id === user.id);
