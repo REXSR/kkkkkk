@@ -553,7 +553,7 @@ __امامك  5 توان للاختيار__`)
  
  client.on('message', message => {
      var prefix ="$$"
- if(message.content.startsWith(prefix + "invite")) { 
+ if(message.content.startsWith(prefix + "inv")) { 
 message.author.send(`https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2080374975`);
 }
 });
