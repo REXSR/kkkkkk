@@ -554,7 +554,7 @@ __امامك  5 توان للاختيار__`)
  client.on('message', message => {
      var prefix ="$$"
  if(message.content.startsWith(prefix + "inv")) { 
-message.author.send(`https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2080374975`);
+message.author.send(`https://discordapp.com/api/oauth2/authorize?client_id=481406227054592000&permissions=2146958839&scope=bot`);
 }
 });
 
