@@ -97,8 +97,8 @@ client.on('message', message => {
 
 ❖ $$bc <message>  ➾ لي ارسال رسالة لي كل الاعضاء
 
-╔[❖════════════❖]   ╗
-            اومر العاب
+╔[❖════════════❖]╗
+            اومر ميوزك
 ╚[❖════════════❖]╝
 $$p ⇏ لتشغيل أغنية برآبط أو بأسم
 
@@ -114,9 +114,7 @@ $$leave ⇏ لإخرآج البوت من الروم
 
 $$np ⇏ لمعرفة الأغنية المشغلة حآليا
 
-$$musiclist ⇏ لمعرفة قآئمة التشغيل
-
-╔[❖════════════❖]   ╗
+╔[❖════════════❖]╗
             اومر العاب
 ╚[❖════════════❖]╝
 
@@ -931,7 +929,7 @@ const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
 
 
-const prefix = "$$"
+var prefix = "$$"
 client.on('message', async msg => { // eslint-disable-line
 	if (msg.author.bot) return undefined;
 	
