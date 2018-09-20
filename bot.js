@@ -648,7 +648,7 @@ client.on('guildMemberAdd', member => {
       .addField('🆔 | user :', "**[" + `${member.id}` + "]**" )
               .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
              
-                .addField("invitewith:",' [inviter]')
+                .addField("invitewith:",' ${inviter}')
                    
                                    .addField(' الـسيرفر', `${member.guild.name}`,true)
                                      
