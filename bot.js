@@ -1183,7 +1183,7 @@ if (message.content.startsWith(prefix + 'نقاطي')) {
   fs.writeFile("./Data/fkkPTS.json", JSON.stringify(points), (err) => {
     if (err) console.error(err)
   })
-});
+
 
 
 
