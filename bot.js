@@ -1130,7 +1130,6 @@ function play(guild, song) {
 
 
 
-const fs = require("fs")
 let points = JSON.parse(fs.readFileSync('./Data/fkkPTS.json', 'utf8'));
 const prefix = "$$";//البريفكس
 
