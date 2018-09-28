@@ -1129,7 +1129,7 @@ function play(guild, song) {
 
 
 
-
+client.on('message', message => {
 let points = JSON.parse(fs.readFileSync('./Data/fkkPTS.json', 'utf8'));
 const prefix = "$$";//البريفكس
 
