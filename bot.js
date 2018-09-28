@@ -867,7 +867,7 @@ const queue = new Map();
 
 
 
-const prefix = "$$" //هنا حط البرفيكس
+var prefix = "$$" //هنا حط البرفيكس
 client.on('message', async msg => { 
 	if (msg.author.bot) return undefined;
 	
