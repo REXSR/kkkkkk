@@ -1165,7 +1165,12 @@ msg.channel.send(`${item.type}`).then(() => {
 	})
 }
 });
+
+
+
+
 client.on('message', message => {
+	var prefix = "$$"
 if (message.content.startsWith(prefix + 'نقاطي')) {
 	if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 	let userData = points[message.author.id];
@@ -1179,16 +1184,6 @@ if (message.content.startsWith(prefix + 'نقاطي')) {
     if (err) console.error(err)
   })
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
