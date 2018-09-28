@@ -858,65 +858,6 @@ client.on('guildMemberAdd', member=> {
 
 
 
-client.on('message', message => {//unmute
-    if (message.content.startsWith('$$unmute')) {
-  if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
-   let men = message.mentions.users.first()
-   let mas = message.author
-   if(!men) return message.channel.send('`منشن الشخص الذي تريد فك الميوت عنه `');
-   message.guild.channels.forEach(c => {
-   c.overwritePermissions(men.id, {
-           SEND_MESSAGES: true
-           })
-      })
-  const embed = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .setDescription(`**
-   <@${men.id}>
-  تم فك الميوت الكتابي
-  بواسطة : <@${message.author.id}> **`)
-
-  client.users.get(men.id).sendEmbed(embed)
-  const Embed11 = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .setAuthor(message.guild.name, message.guild.iconURL)
-  .setDescription(`          <@${men.id}>
-  تم فك الميوت الكتابي
-  بواسطة : <@${message.author.id}>
-  `)
-  message.channel.sendEmbed(Embed11).then(message => {message.delete(20000)})
-      }
-});
-client.on('message', message => {//mute
-    if (message.content.startsWith('$$mute')) {
-  if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
-  let men = message.mentions.users.first()
-  let mas = message.author
-  if(!men) return message.channel.send('`منشن الشخص الذي تريد ان تعطيه ميوت كتابي` ');
-  message.guild.channels.forEach(c => {
-  c.overwritePermissions(men.id, {
-            SEND_MESSAGES: false
-  })
-      })
-  const embed = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .setDescription(`**
-   <@${men.id}>
-  لقد تم اعطائك ميوت كتابي
-  بواسطة : <@${message.author.id}> **`)
-
-  client.users.get(men.id).sendEmbed(embed)
-  const Embed11 = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .setAuthor(message.guild.name, message.guild.iconURL)
-  .setDescription(`          <@${men.id}>
-  لقد تم اعطائه الميوت الكتابي بنجاح
-  بواسطة : <@${message.author.id}> `)
-  message.channel.sendEmbed(Embed11).then(message => {message.delete(20000)})
-      }
-
-
-});
 
 
 
